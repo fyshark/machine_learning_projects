@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RunningCore</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>fatigue_classification</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -36,7 +36,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */
 .highlight .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */
 .highlight .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */
-.highlight .pm { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation.Marker */
 .highlight .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */
 .highlight .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */
 .highlight .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */
@@ -14465,6 +14464,10 @@ a.anchor-link {
   display: none;
 }
 
+.highlight  {
+  margin: 0.4em;
+}
+
 /* Input area styling */
 .jp-InputArea {
   overflow: hidden;
@@ -14474,26 +14477,9 @@ a.anchor-link {
   overflow: hidden;
 }
 
-.CodeMirror.cm-s-jupyter .highlight pre {
-/* weird, but --jp-code-padding defined to be 5px but 4px horizontal padding is hardcoded for pre.CodeMirror-line */
-  padding: var(--jp-code-padding) 4px;
+.CodeMirror pre {
   margin: 0;
-
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-
-}
-
-.jp-OutputArea-output pre {
-  line-height: inherit;
-  font-family: inherit;
-}
-
-.jp-RenderedText pre {
-  color: var(--jp-content-font-color1);
-  font-size: var(--jp-code-font-size);
+  padding: 0;
 }
 
 /* Using table instead of flexbox so that we can use break-inside property */
@@ -14539,10 +14525,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
   display: none;
 }
 
-@page {
-    margin: 0.5in; /* Margin for each printed piece of paper */
-}
-
 @media print {
   .jp-Cell-inputWrapper,
   .jp-Cell-outputWrapper {
@@ -14577,12 +14559,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: {
-                    automatic: true
+                    linebreaks: { 
+                    automatic: true 
                     }
                 }
             });
-
+        
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -14597,10 +14579,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="COMP47670-Assignment-II-Autumn-2023">COMP47670 Assignment II Autumn 2023<a class="anchor-link" href="#COMP47670-Assignment-II-Autumn-2023">&#182;</a></h1><h2 id="Time-Series-Running-Data">Time Series Running Data<a class="anchor-link" href="#Time-Series-Running-Data">&#182;</a></h2><h2 id="Objective">Objective<a class="anchor-link" href="#Objective">&#182;</a></h2><p>The objective of this assignment is to identify good models for classifying time series data.<br />
-The data is from an accelerometer sensor and there are samples of fatigued and non-fatigued running. The data has been segmented into strides and the segments (samples) are labelled F (fatigued) and NF (not fatigued). The data for two subjects A and B are available in the files  <code>fatigueA.csv</code> and  <code>fatigueB.csv</code>. This dataset is extracted from a much larger dataset described <a href="https://openreview.net/pdf?id=9c0lAonDNP">here</a>.<br />
+<h1 id="Machine-Learning-Project-with-ROCKET">Machine Learning Project with ROCKET<a class="anchor-link" href="#Machine-Learning-Project-with-ROCKET">&#182;</a></h1><h2 id="Time-Series-Running-Data">Time Series Running Data<a class="anchor-link" href="#Time-Series-Running-Data">&#182;</a></h2><p><a href="https://yu-feng.me">My portfolio</a> <br>
+<a href="https://www.linkedin.com/in/yu-01">My Linkedin</a>  <br>
+<a href="https://github.com/fyshark">My Github</a></p>
+<h2 id="Objective">Objective<a class="anchor-link" href="#Objective">&#182;</a></h2><p>The objective of this assignment is to identify good models for classifying time series data.<br>
+The data is from an accelerometer sensor and there are samples of fatigued and non-fatigued running. The data has been segmented into strides and the segments (samples) are labelled F (fatigued) and NF (not fatigued). The data for two subjects A and B are available in the files  <code>fatigueA.csv</code> and  <code>fatigueB.csv</code>. This dataset is extracted from a much larger dataset described <a href="https://openreview.net/pdf?id=9c0lAonDNP">here</a>.<br>
 At present, the best performing method for time-series classification is <a href="https://openreview.net/pdf?id=9c0lAonDNP">Rocket</a>. 
-A rocket implementation is available in the <a href="https://www.sktime.net/en/latest/api_reference/auto_generated/sktime.transformations.panel.rocket.Rocket.html">sktime tool kit</a>. This sktime implementation can be used in this assignment.<br />
+A rocket implementation is available in the <a href="https://www.sktime.net/en/latest/api_reference/auto_generated/sktime.transformations.panel.rocket.Rocket.html">sktime tool kit</a>. This sktime implementation can be used in this assignment.<br>
 Some code to get you started in available in the notebook <code>RunningCore</code>.</p>
 
 </div>
@@ -14665,7 +14650,9 @@ Some code to get you started in available in the notebook <code>RunningCore</cod
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -14675,7 +14662,9 @@ Some code to get you started in available in the notebook <code>RunningCore</cod
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 
@@ -14861,225 +14850,6 @@ Some code to get you started in available in the notebook <code>RunningCore</cod
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check for NaN values</span>
-<span class="n">nan_values</span> <span class="o">=</span> <span class="n">fatigue_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">nan_values</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>0      0
-1      0
-2      0
-3      0
-4      0
-5      0
-6      0
-7      0
-8      0
-9      0
-10     0
-11     0
-12     0
-13     0
-14     0
-15     0
-16     0
-17     0
-18     0
-19     0
-20     0
-21     0
-22     0
-23     0
-24     0
-25     0
-26     0
-27     0
-28     0
-29     0
-30     0
-31     0
-32     0
-33     0
-34     0
-35     0
-36     0
-37     0
-38     0
-39     0
-40     0
-41     0
-42     0
-43     0
-44     0
-45     0
-46     0
-47     0
-48     0
-49     0
-50     0
-51     0
-52     0
-53     0
-54     0
-55     0
-56     0
-57     0
-58     0
-59     0
-60     0
-61     0
-62     0
-63     0
-64     0
-65     0
-66     0
-67     0
-68     0
-69     0
-70     0
-71     0
-72     0
-73     0
-74     0
-75     0
-76     0
-77     0
-78     0
-79     0
-80     0
-81     0
-82     0
-83     0
-84     0
-85     0
-86     0
-87     0
-88     0
-89     0
-90     0
-91     0
-92     0
-93     0
-94     0
-95     0
-96     0
-97     0
-98     0
-99     0
-100    0
-101    0
-102    0
-103    0
-104    0
-105    0
-106    0
-107    0
-108    0
-109    0
-110    0
-111    0
-112    0
-113    0
-114    0
-115    0
-116    0
-117    0
-118    0
-119    0
-120    0
-121    0
-122    0
-123    0
-124    0
-125    0
-126    0
-127    0
-128    0
-129    0
-130    0
-131    0
-132    0
-133    0
-134    0
-135    0
-136    0
-137    0
-138    0
-139    0
-140    0
-141    0
-142    0
-143    0
-144    0
-145    0
-146    0
-147    0
-148    0
-149    0
-150    0
-151    0
-152    0
-153    0
-154    0
-155    0
-156    0
-157    0
-158    0
-159    0
-160    0
-161    0
-162    0
-163    0
-164    0
-165    0
-166    0
-167    0
-168    0
-169    0
-170    0
-171    0
-172    0
-173    0
-174    0
-175    0
-176    0
-177    0
-178    0
-179    0
-180    0
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
@@ -15100,7 +14870,9 @@ Some code to get you started in available in the notebook <code>RunningCore</cod
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 
@@ -15112,7 +14884,9 @@ Some code to get you started in available in the notebook <code>RunningCore</cod
 </div>
 
 </div>
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15195,7 +14969,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 
@@ -15308,7 +15084,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15358,7 +15136,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 
@@ -15449,7 +15229,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15548,7 +15330,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15558,7 +15342,9 @@ class="
 </pre>
 </div>
 </div>
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15616,7 +15402,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 
@@ -15793,7 +15581,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15803,7 +15593,9 @@ class="
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 
@@ -15870,7 +15662,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -15944,7 +15738,9 @@ Accuracy on the test set: 0.9059
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16016,7 +15812,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16091,7 +15889,9 @@ Accuracy on the training set (cross-validation): 0.9071
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16101,7 +15901,9 @@ Accuracy on the training set (cross-validation): 0.9071
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 
@@ -16175,7 +15977,9 @@ Accuracy on the training set (cross-validation): 0.9071
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16249,7 +16053,9 @@ Accuracy on the test set: 0.9647
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16324,7 +16130,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16398,7 +16206,9 @@ Cross-validation Accuracy (mean): 0.8250
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16408,7 +16218,9 @@ Cross-validation Accuracy (mean): 0.8250
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 
@@ -16478,7 +16290,9 @@ Cross-validation Accuracy (mean): 0.8250
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16548,7 +16362,9 @@ Accuracy on the test set for Decision Tree: 0.8941
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16625,7 +16441,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16699,7 +16517,9 @@ Accuracy on the training set (cross-validation): 0.7857
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16709,7 +16529,9 @@ Accuracy on the training set (cross-validation): 0.7857
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
 
@@ -16781,7 +16603,9 @@ Accuracy on the training set (cross-validation): 0.7857
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16861,7 +16685,9 @@ Accuracy on the test set for Random Forest: 0.9176
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -16938,7 +16764,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17010,7 +16838,9 @@ Accuracy on the training set (cross-validation): 0.8821
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17020,7 +16850,9 @@ Accuracy on the training set (cross-validation): 0.8821
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
 
@@ -17086,7 +16918,9 @@ Accuracy on the training set (cross-validation): 0.8821
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17158,7 +16992,9 @@ Accuracy on the test set for Naive Bayes: 0.7294
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17168,7 +17004,9 @@ Accuracy on the test set for Naive Bayes: 0.7294
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
 
@@ -17234,7 +17072,9 @@ Accuracy on the test set for Naive Bayes: 0.7294
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17308,7 +17148,9 @@ Accuracy on the test set for Ridge Classifier: 0.8824
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17318,7 +17160,9 @@ Accuracy on the test set for Ridge Classifier: 0.8824
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
 
@@ -17380,7 +17224,9 @@ Accuracy on the test set for Ridge Classifier: 0.8824
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17462,7 +17308,9 @@ Accuracy on the test set: 0.8941
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
 
@@ -17551,7 +17399,9 @@ Accuracy on the test set: 0.8941
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17616,7 +17466,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17718,7 +17570,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17819,7 +17673,9 @@ y3d_test shape: (85,)
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17891,7 +17747,9 @@ Accuracy on the training set for KNN Classifier: 1.0
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -17949,7 +17807,9 @@ Kernels: 2000, Training Accuracy: 1.0, Test Accuracy: 0.9176470588235294
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18002,7 +17862,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18065,7 +17927,9 @@ Test Accuracy for 200 kernels: 0.9412
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18152,7 +18016,9 @@ Test Accuracy for 200 kernels: 0.9412
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18224,7 +18090,9 @@ Accuracy on the training set for SVM Classifier: 1.0
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18285,7 +18153,9 @@ Number of Kernels: 300, Training Accuracy: 0.9970238095238095, Test Accuracy: 0.
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18338,7 +18208,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18398,7 +18270,9 @@ Test Accuracy for 150 kernels: 0.9647
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18483,7 +18357,9 @@ Test Accuracy for 150 kernels: 0.9647
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18555,7 +18431,9 @@ Accuracy on the training set for Decision Tree Classifier: 0.9880952380952381
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18616,7 +18494,9 @@ Number of Kernels: 1000, Training Accuracy: 0.9880952380952381, Test Accuracy: 0
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18669,7 +18549,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18732,7 +18614,9 @@ Test Accuracy for 300 kernels: 0.9176
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18818,7 +18702,9 @@ Test Accuracy for 300 kernels: 0.9176
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18890,7 +18776,9 @@ Accuracy on the training set for Random Forest Classifier: 1.0
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -18952,7 +18840,9 @@ Number of Kernels: 300, Training Accuracy: 1.0, Test Accuracy: 0.952941176470588
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19005,7 +18895,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19068,7 +18960,9 @@ Test Accuracy for 80 kernels: 0.9176
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19158,7 +19052,9 @@ Test Accuracy for 80 kernels: 0.9176
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19231,7 +19127,9 @@ Accuracy on the training set for Naive Bayes Classifier: 0.8839285714285714
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19289,7 +19187,9 @@ Number of Kernels: 600, Training Accuracy: 0.9047619047619048, Test Accuracy: 0.
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19342,7 +19242,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19405,7 +19307,9 @@ Test Accuracy for 600 kernels: 0.9059
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19488,7 +19392,9 @@ Test Accuracy for 600 kernels: 0.9059
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19560,7 +19466,9 @@ Accuracy on the training set for Ridge Classifier: 1.0
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19620,7 +19528,9 @@ Number of Kernels: 1500, Training Accuracy: 1.0, Test Accuracy: 0.96470588235294
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19673,7 +19583,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19736,7 +19648,9 @@ Test Accuracy for 500 kernels: 0.9765
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19828,7 +19742,9 @@ Test Accuracy for 500 kernels: 0.9765
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19894,7 +19810,9 @@ Accuracy on the test set: 0.9412
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -19955,7 +19873,9 @@ Number of Kernels: 500, Training Accuracy: 0.9375, Test Accuracy: 0.929411764705
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20008,7 +19928,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20071,7 +19993,9 @@ Test Accuracy for 250 kernels: 0.9412
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20150,7 +20074,9 @@ Test Accuracy for 250 kernels: 0.9412
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[84]:</div>
 
@@ -20239,7 +20165,9 @@ Test Accuracy for 250 kernels: 0.9412
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20293,7 +20221,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20378,7 +20308,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[87]:</div>
 
@@ -20468,7 +20400,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[88]:</div>
 
@@ -20565,7 +20499,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20581,7 +20517,9 @@ class="
 </div>
 
 </div>
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20649,7 +20587,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20766,7 +20706,9 @@ To create a global model, I would combine the data from both FatigueA and Fatigu
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -20776,7 +20718,9 @@ To create a global model, I would combine the data from both FatigueA and Fatigu
 </pre>
 </div>
 </div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[91]:</div>
 
@@ -20981,7 +20925,9 @@ To create a global model, I would combine the data from both FatigueA and Fatigu
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21201,7 +21147,9 @@ To create a global model, I would combine the data from both FatigueA and Fatigu
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[93]:</div>
 
@@ -21213,7 +21161,9 @@ To create a global model, I would combine the data from both FatigueA and Fatigu
 </div>
 
 </div>
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21358,7 +21308,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21428,7 +21380,9 @@ Cross-validation accuracy: 0.8485
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21498,7 +21452,9 @@ Cross-validation accuracy: 0.8182
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21570,7 +21526,9 @@ Cross-validation accuracy: 0.8667
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21675,7 +21633,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21745,7 +21705,9 @@ Cross-validation accuracy: 0.9333
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21815,7 +21777,9 @@ Cross-validation accuracy: 0.8303
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21887,7 +21851,9 @@ Cross-validation accuracy: 0.9515
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -21973,7 +21939,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -22101,7 +22069,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -22207,7 +22177,9 @@ Accuracy on the test set: 0.9608
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -22280,7 +22252,9 @@ Accuracy on the test set: 0.9804
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -22362,7 +22336,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
 <div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
@@ -22415,7 +22391,9 @@ class="
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+
+<div class="jp-OutputArea-child">
+
     
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[117]:</div>
 
